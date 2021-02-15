@@ -1,5 +1,6 @@
-import { Layout, Menu, Breadcrumb, Card, Row, Col, Table, Input } from 'antd';
+import { Layout, Menu, Breadcrumb, Typography, Card, Row, Col, Table, Input } from 'antd';
 const { Header, Content, Footer } = Layout;
+const { Title } = Typography
 import { useState } from 'react'
 
 const Calculator = () => {
@@ -52,17 +53,17 @@ const Calculator = () => {
 
     const columns = [
         {
-            title: 'Angka Pertama',
+            title: 'Pertama',
             dataIndex: 'firstNumber',
-            key: 'firstNumber'
+            key: 'firstNumber',
         },
         {
-            title: 'Operator',
+            title: 'Op',
             dataIndex: 'operator',
             key: 'operator',
         },
         {
-            title: 'Angka Terakhir',
+            title: 'Terakhir',
             dataIndex: 'lastNumber',
             key: 'lastNumber',
         },
@@ -80,19 +81,18 @@ const Calculator = () => {
         </Breadcrumb>
         <div className="site-layout-content">
             <Row gutter={[8, 8]}>
-                <Col span={8}>
-                    <Card style={{ textAlign: 'right' }} title={title ? title : '0'}>
-                        {data.map((item, index) => {
-                            return item.row.map(cal => {
-                                return <a onClick={() => calculate(cal)}> <Card.Grid style={{ width: '25%', textAlign: 'center', backgroundColor: typeof cal == 'string' ? 'rgba(52,52,52,0.1)' : 'white' }}>
-                                    {cal}
-                                </Card.Grid></a>
-                            })
-                        })}
-                    </Card>
+                <Col flex="auto" style={{ maxWidth: '400px', textAlign: 'right' }}>
+                    <Title level={2} style={{ marginRight: 20 }}>{title ? title : '0'}</Title>
+                    {data.map((item, index) => {
+                        return item.row.map(cal => {
+                            return <a onClick={() => calculate(cal)}> <Card.Grid style={{ width: '25%', textAlign: 'center', backgroundColor: typeof cal == 'string' ? 'rgba(52,52,52,0.1)' : 'white' }}>{cal}</Card.Grid></a>
+                        })
+                    })}
+
+
                 </Col>
-                <Col span={16}>
-                    <Table columns={columns} dataSource={history}></Table>
+                <Col flex="auto">
+                    <Table size="small" columns={columns} dataSource={history}></Table>
                 </Col>
             </Row>
         </div>
