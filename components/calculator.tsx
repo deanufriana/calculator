@@ -112,7 +112,7 @@ const Calculator = () => {
                 </Col>
                 <Col flex="auto">
                     <Button onClick={() => setHistory([])} type="primary" style={{ marginBottom: 16, alignSelf: 'self-end' }}> Clear History</Button>
-                    <Table size="small" columns={columns} dataSource={history}></Table>
+                    <Table size="small" scroll={{ x: 400 }} columns={columns} dataSource={history}></Table>
                 </Col>
             </Row>
         </div>
