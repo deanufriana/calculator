@@ -55,7 +55,7 @@ const Calculator = () => {
         {
             title: 'Pertama',
             dataIndex: 'firstNumber',
-            key: 'firstNumber',
+            key: 'firstNumber'
         },
         {
             title: 'Op',
@@ -81,15 +81,13 @@ const Calculator = () => {
         </Breadcrumb>
         <div className="site-layout-content">
             <Row gutter={[8, 8]}>
-                <Col flex="auto" style={{ maxWidth: '400px', textAlign: 'right' }}>
-                    <Title level={2} style={{ marginRight: 20 }}>{title ? title : '0'}</Title>
+                <Col flex="400px">
+                    <Title level={2} style={{ padding: 10, textOverflow: 'ellipsis', maxWidth: '400px', textAlign: 'right' }}>{title ? title : '0'}</Title>
                     {data.map((item, index) => {
                         return item.row.map(cal => {
                             return <a onClick={() => calculate(cal)}> <Card.Grid style={{ width: '25%', textAlign: 'center', backgroundColor: typeof cal == 'string' ? 'rgba(52,52,52,0.1)' : 'white' }}>{cal}</Card.Grid></a>
                         })
                     })}
-
-
                 </Col>
                 <Col flex="auto">
                     <Table size="small" columns={columns} dataSource={history}></Table>

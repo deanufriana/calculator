@@ -13,11 +13,16 @@ a {
 
 * {
   box-sizing: border-box;
+  user-select: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -khtml-user-select: none; 
+  -ms-user-select: none; 
 }
 
 .site-layout-content {
   min-height: 280px;
-  padding: 24px;
+  padding: 20px;
   background: #fff;
 }
 
