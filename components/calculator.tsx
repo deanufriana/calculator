@@ -9,6 +9,7 @@ const Calculator = () => {
     const [firstNumber, setFirstNumber] = useState('')
     const [operator, setOperator] = useState('')
     const [lastNumber, setLastNumber] = useState('')
+    const [result, setResult] = useState('0')
 
     const clear = () => {
         setOperator('')
@@ -41,7 +42,7 @@ const Calculator = () => {
             if (operator == '-') result = +firstNumber - +lastNumber
             if (operator == '*') result = +firstNumber * +lastNumber
             if (operator == '/') result = +firstNumber / +lastNumber
-
+            setResult(result.toString())
             setHistory([...history, { firstNumber, lastNumber, result: result.toString(), operator }])
             clear()
         }
@@ -98,7 +99,7 @@ const Calculator = () => {
                     <Row>
                         <Col flex="auto">
                             <Title level={2} style={{ padding: 10, textOverflow: 'ellipsis', maxWidth: '400px', textAlign: 'right' }}>
-                                {!firstNumber && '0'}
+                                {!firstNumber && numberWithCommas(result)}
                                 {numberWithCommas(firstNumber)} <br /> {numberWithCommas(lastNumber)} </Title>
                         </Col>
                         <Col><Title level={2} style={{ alignSelf: 'center' }}>{operator}</Title></Col>
